@@ -1,29 +1,34 @@
 import { comments, deleteComment } from "./api.js";
 import { postComments } from "./api.js";
 import { renderLoginComponent } from "./loginComponent.js";
-
+import { format } from "date-fns";
 
 function getDate(currentDate = new Date()) {
-    let day = currentDate.getDate();
-    let month = currentDate.getMonth() + 1;
-    let year = currentDate.getFullYear().toString().substr(-2);
-    let hour = currentDate.getHours();
-    let minutes = currentDate.getMinutes();
-    if (month < 10) {
-        month = "0" + month;
-    }
-    if (minutes < 10) {
-        minutes = "0" + minutes;
-    }
-    if (hour < 10) {
-        hour = "0" + hour;
-    }
-    if (day < 10) {
-        day = "0" + day;
-    }
-
-    return day + '.' + month + '.' + year + ' ' + hour + ':' + minutes;
+    return format(currentDate, 'yyyy-MM-dd hh.mm.ss');
 };
+
+
+// function getDate(currentDate = new Date()) {
+//     let day = currentDate.getDate();
+//     let month = currentDate.getMonth() + 1;
+//     let year = currentDate.getFullYear().toString().substr(-2);
+//     let hour = currentDate.getHours();
+//     let minutes = currentDate.getMinutes();
+//     if (month < 10) {
+//         month = "0" + month;
+//     }
+//     if (minutes < 10) {
+//         minutes = "0" + minutes;
+//     }
+//     if (hour < 10) {
+//         hour = "0" + hour;
+//     }
+//     if (day < 10) {
+//         day = "0" + day;
+//     }
+
+//     return day + '.' + month + '.' + year + ' ' + hour + ':' + minutes;
+// };
 
 function delay(interval = 300) {
     return new Promise((resolve) => {
